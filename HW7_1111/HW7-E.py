@@ -1,34 +1,24 @@
-def create_leaderboard():
-    """
-    讀取學生資料，依分數由高至低排序；分數相同時按姓名預設（A-Z）排序，並印出姓名。
-    """
-    students = []
+try:
+    n = int(input().strip())
+except Exception:
+    n = 0
+
+entries = []
+for _ in range(n):
     try:
-        num_students = int(input())
-    except (ValueError, EOFError):
-        num_students = 0
+        parts = input().strip().split()
+        name = parts[0] if parts else ""
+        score = int(parts[1]) if len(parts) > 1 else 0
+    except Exception:
+        name = ""
+        score = 0
+    entries.append((score, name))
 
-    for _ in range(num_students):
-        try:
-            line = input().rstrip()
-            if not line:
-                continue
-            # 支援姓名可能有空格，從右邊分割最後一個欄位為分數
-            parts = line.rsplit(maxsplit=1)
-            if len(parts) == 2:
-                name, score_str = parts[0], parts[1]
-            else:
-                name, score_str = parts[0], "0"
-            score = int(score_str)
-            students.append((score, name))
-        except (IndexError, ValueError, EOFError):
-            continue
-
-    # 依分數由高至低排序；分數相同時姓名由小到大（預設）
-    students.sort(key=lambda t: (-t[0], t[1]))
-
-    for score, name in students:
-        print(name)
-
-if __name__ == "__main__":
-    create_leaderboard()
+# 每次用 for 迴圈找出目前最高分的索引，印出姓名後移除該項
+for _ in range(len(entries)):
+    max_idx = 0
+    for j in range(1, len(entries)):
+        if entries[j][0] > entries[max_idx][0]:
+            max_idx = j
+    print(entries[max_idx][1])
+    entries.pop(max_idx)
