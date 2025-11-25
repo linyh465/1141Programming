@@ -1,3 +1,4 @@
+'''
 def main():
     try:
         domain = input().strip()
@@ -22,3 +23,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''
+
+domain = input().strip()
+N = int(input())
+email_list = []
+for _ in range(N):
+    email = input().strip()
+    if email.endswith(domain):
+        email_list.append(email)
+print(email_list)

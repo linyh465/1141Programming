@@ -1,4 +1,4 @@
-
+'''
 # 讀取 N 筆會員興趣資料，建立 interest -> set(names) 字典
 try:
 	n = int(input())
@@ -23,3 +23,4 @@ for _ in range(m):
 	members = sorted(groups.get(q, set()))
 	print(members)
 
+'''
