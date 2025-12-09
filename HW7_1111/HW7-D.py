@@ -1,3 +1,4 @@
+'''
 def handle_wait(queue, name):
     queue.append(name)
 
@@ -38,3 +39,31 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''
+
+queue = []
+outputs = []
+
+while True:
+    line = input().strip()
+
+    if line == "EXIT":
+        break
+
+    if line.startswith("WAIT "):
+        # 提取 'WAIT ' 之後的名字
+        name = line[5:].strip()
+        if name:
+            queue.append(name)
+
+    elif line == "CALL":
+        if queue:
+            # 取出並移除第一個名字
+            called_name = queue.pop(0)
+            outputs.append(f"Call: {called_name}")
+        else:
+            outputs.append("No one in line")
+
+# 統一輸出所有 CALL 的結果
+for out in outputs:
+    print(out)

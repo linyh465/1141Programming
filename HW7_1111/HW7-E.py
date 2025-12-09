@@ -1,3 +1,4 @@
+'''
 try:
     n = int(input().strip())
 except Exception:
@@ -22,3 +23,19 @@ for _ in range(len(entries)):
             max_idx = j
     print(entries[max_idx][1])
     entries.pop(max_idx)
+'''
+
+grade = int(input())
+all_grade = []
+for i in range(grade):
+    grade_list = tuple(input().split())
+    all_grade.append(grade_list)
+
+for j in range(grade):
+    max_index = 0
+    for k in range(1, len(all_grade)):
+        if int(all_grade[k][1]) > int(all_grade[max_index][1]):
+            max_index = k
+
+    print(all_grade[max_index][0])
+    all_grade.pop(max_index)
