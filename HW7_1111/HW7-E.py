@@ -25,6 +25,7 @@ for _ in range(len(entries)):
     entries.pop(max_idx)
 '''
 
+'''
 grade = int(input())
 all_grade = []
 for i in range(grade):
@@ -39,3 +40,37 @@ for j in range(grade):
 
     print(all_grade[max_index][0])
     all_grade.pop(max_index)
+'''
+
+
+
+n = int(input())
+
+grade_list = [] # 初始化一個空列表，用於儲存所有學生的資料
+
+for i in range(n):
+    grade = tuple(input().split())
+    grade_list.append(grade) # 將該學生的元組新增到列表中
+
+
+# 使用列表的 sort() 方法進行原地排序
+# key=lambda x: int(x[1]) 定義了排序的依據：
+# 1. x[1] 是元組中的第二個元素 (成績，如 '85')
+# 2. int() 確保在比較時將字串成績轉換為數字，避免 '100' < '90' 的錯誤
+# reverse=True 設置為降序排列 (分數從高到低)
+grade_list.sort(key=lambda x:int(x[1]), reverse=True)
+
+
+
+#Pythonic
+for name, grade in grade_list:
+    print(name)
+
+'''
+for j in range(n):
+    print(grade_list[0][0])
+    grade_list.pop(0)
+'''
+
+
+# sorted 參考 https://www.runoob.com/python/python-func-sorted.html
